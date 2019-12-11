@@ -1,4 +1,4 @@
-var redisClient = require("redis");
+const redisClient = require("redis");
 
 class RedisClient {
     static getInstance() {
@@ -17,15 +17,17 @@ class RedisClient {
 }
 
 RedisClient.prototype.set = function (id, key, val) {
-    this.client.select(id, function () {
-        this.client.set("key", "val", redisClient.print);
+    let client = this.client;
+    client.select(id, function () {
+        client.set("key", "val", redisClient.print);
     })
-}
+};
 RedisClient.prototype.get = function (id, key, val, next) {
-    this.client.select(id, function () {
-        this.client.get("string key", next);
+    let client = this.client;
+    client.select(id, function () {
+        client.get("string key", next);
     })
-}
+};
 
 //!todo redisClient
 // client.hset("hash key", "hashtest 1", "some value", redisClient.print);
