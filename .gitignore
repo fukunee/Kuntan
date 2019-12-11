@@ -4,6 +4,7 @@ node_modules
 package-lock.json
 
 # Build dir
+/dist
 /dist/web
 /dist/api
 
@@ -20,6 +21,11 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+*.sw?
 
 # temp files
 /tmp
+
+# local env files
+.env.local
+.env.*.local

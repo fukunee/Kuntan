@@ -40,17 +40,14 @@ server.on('listening', onListening);
 
 function normalizePort(val) {
     const port = parseInt(val, 10);
-
     if (isNaN(port)) {
         // named pipe
         return val;
     }
-
     if (port >= 0) {
         // port number
         return port;
     }
-
     return false;
 }
 
@@ -99,4 +96,4 @@ function onListening() {
  */
 
 let redis = redisClient.getInstance();
-console.log("Redis connection:", redis.client.address)
+console.log("Redis connection:", redis.client.address);

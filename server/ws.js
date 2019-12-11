@@ -13,8 +13,8 @@ ws.on = function (socket) {
     });
     socket.emit("msg");
     socket.on("msg", function (obj) {
-        console.log('the websokcet message is' + JSON.stringify(obj));
+        console.log('the websocket message is' + JSON.stringify(obj));
     })
-}
+};
 
 module.exports = ws;
