@@ -1,6 +1,6 @@
 function ws(server) {
     this.io = require('socket.io')(server);
-    io.on('connection', ws.on);
+    this.io.on('connection', ws.on);
 }
 
 // websocket controller
