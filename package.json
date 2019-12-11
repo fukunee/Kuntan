@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./server/bin/www",
-    "serve": "vue-cli-service serve ./client/src/main.js",
+    "server": "node ./server/bin/www",
+    "client": "vue-cli-service serve ./client/src/main.js",
     "build": "vue-cli-service build ./client/src/main.js"
   },
   "dependencies": {
