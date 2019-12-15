@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import store from './store.js'
 import App from './App.vue'
+// noinspection NpmUsedModulesInstalled
 import VueSocketIO from 'vue-socket.io'
 
 Vue.config.productionTip = false;

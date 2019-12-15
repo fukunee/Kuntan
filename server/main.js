@@ -3,15 +3,46 @@
 /**
  * Module dependencies.
  */
-const app = require('../app');
-const debug = require('debug')('KunTan:server');
+const app = require('./app');
+const debug = require('debug')('Kuntan:server');
 const http = require('http');
-const redisClient = require('../models/redisClient');
+// noinspection JSUnusedLocalSymbols
+const dotenv = require('dotenv').config();
+const mongoose = require('mongoose');
+
+// noinspection JSUnresolvedVariable
+/**
+ * Import Env
+ */
+const SERVER_PORT = process.env.PORT || 8080,
+    DB_USER = process.env.DB_USER,
+    DB_PASS = process.env.DB_PASS,
+    DB_URL = process.env.DB_URL,
+    DB_COLLECTION = process.env.DB_COLLECTION;
+
+
+/**
+ * MongoDB Client connect
+ */
+const connectionString = `mongodb://${DB_USER}:${DB_PASS}@${DB_URL}/${DB_COLLECTION}`;
+mongoose.connect(
+    connectionString,
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true
+    },
+    err => {
+        if (err) console.log(err);
+    }
+).then(r => {
+    console.log('MongoDB connection:', r.connections[0].host + '/' + r.connections[0].name);
+});
 
 /**
  * Get port from environment and store in Express.
  */
-const port = normalizePort(process.env.PORT || '8080');
+const port = normalizePort(SERVER_PORT);
 app.set('port', port);
 
 /**
@@ -22,14 +53,12 @@ const server = http.createServer(app);
 /**
  * Create Websocket server.
  */
-
-require('../ws')(server);
-
+const io = require('socket.io')(server);
+require('./io')(io);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
-
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
@@ -37,7 +66,6 @@ server.on('listening', onListening);
 /**
  * Normalize a port into a number, string, or false.
  */
-
 function normalizePort(val) {
     const port = parseInt(val, 10);
     if (isNaN(port)) {
@@ -54,7 +82,6 @@ function normalizePort(val) {
 /**
  * Event listener for HTTP server "error" event.
  */
-
 function onError(error) {
     if (error.syscall !== 'listen') {
         throw error;
@@ -90,10 +117,3 @@ function onListening() {
         : 'port ' + addr.port;
     debug('Listening on ' + bind);
 }
-
-/**
- * Redis Client setup
- */
-
-let redis = redisClient.getInstance();
-console.log("Redis connection:", redis.client.address);
