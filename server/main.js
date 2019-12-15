@@ -20,7 +20,6 @@ const SERVER_PORT = process.env.PORT || 8080,
     DB_URL = process.env.DB_URL,
     DB_COLLECTION = process.env.DB_COLLECTION;
 
-
 /**
  * MongoDB Client connect
  */
@@ -62,6 +61,8 @@ require('./io')(io);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+// -------------------------------------------------------------------
 
 /**
  * Normalize a port into a number, string, or false.
