@@ -4,7 +4,7 @@ import VueSocketIO from 'vue-socket.io'
 import store from "../store";
 
 const socket = {
-    debug: true,
+    // debug: true,
     connection: '',
     vuex: {
         store,

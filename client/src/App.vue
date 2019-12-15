@@ -19,6 +19,7 @@
             window.addEventListener('storage', function (e) {
                 if (e.key === 'token') {
                     let token = e.newValue;
+                    vm.$socket.disconnect();
                     vm.$getSocket(token);
                 }
             });

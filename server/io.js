@@ -3,6 +3,8 @@ module["exports"] = io => {
         //TODO verify token
         let token = socket.handshake.query.token;
         if (token) {
+            //TODO 用户访问控制，查Client表，若已建立WS通信则报错
+            //TODO 将socket对象中插入用户信息
             return next();
         } else {
             console.log('authentication error');
