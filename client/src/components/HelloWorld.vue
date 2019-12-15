@@ -43,7 +43,7 @@
         methods: {
             emit() {
                 console.log('emit');
-                this.$socket.emit('updateBoard', "sss");
+                this.$socket.emit('doBuild', "sss");
             }
         }
 
