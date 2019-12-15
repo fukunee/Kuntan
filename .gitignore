@@ -4,9 +4,9 @@ node_modules
 package-lock.json
 
 # Build dir
-/dist
-/dist/web
-/dist/api
+dist
+dist/web
+dist/api
 
 # Log files
 npm-debug.log*
