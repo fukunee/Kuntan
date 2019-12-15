@@ -3,18 +3,19 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 function jwtSignUser(user) {
-    return jwt.sign({ user }, process.env.TOKEN_SECRET, {
+    // noinspection JSUnresolvedVariable
+    return jwt.sign({user}, process.env.TOKEN_SECRET, {
         expiresIn: '5 days'
     });
 }
 
-module.exports = {
+module["exports"] = {
     async register(req, res) {
         //Check if email exists
         try {
-            const emailExist = await User.findOne({ email: req.body.email });
+            const emailExist = await User.findOne({email: req.body.email});
             if (emailExist) {
-                return res.status(400).send({ error: 'Email already in use.' });
+                return res.status(400).send({error: 'Email already in use.'});
             }
             //Hashing the password
             const salt = await bcrypt.genSalt(10);
@@ -39,21 +40,21 @@ module.exports = {
                 token: jwtSignUser(savedUserJson)
             });
         } catch (err) {
-            res.status(400).send({ error: err });
+            res.status(400).send({error: err});
         }
     },
     async login(req, res) {
         //Check if email exists
-        const user = await User.findOne({ email: req.body.email }).populate({
+        const user = await User.findOne({email: req.body.email}).populate({
             path: 'boards',
             select: ['_id', 'title', 'users', 'lists']
         });
-        if (!user) return res.status(403).send({ error: "Email doesn't exist." });
+        if (!user) return res.status(403).send({error: "Email doesn't exist."});
 
         //Check correct password
         const validPass = await bcrypt.compare(req.body.password, user.password);
         if (!validPass)
-            return res.status(403).send({ error: 'Password is wrong.' });
+            return res.status(403).send({error: 'Password is wrong.'});
 
         user.password = undefined;
         const userJson = user.toJSON();

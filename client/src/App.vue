@@ -12,6 +12,16 @@
         name: 'app',
         components: {
             HelloWorld
+        },
+        mounted: function () {
+            let vm = this;
+            // Listen LocalStorage:Token
+            window.addEventListener('storage', function (e) {
+                if (e.key === 'token') {
+                    let token = e.newValue;
+                    vm.$getSocket(token);
+                }
+            });
         }
     }
 </script>
