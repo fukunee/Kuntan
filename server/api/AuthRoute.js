@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const AuthValidator = require('../validators/AuthValidator');
+const AuthValidator = require('../busiValid/AuthValidator');
 const AuthenticationController = require('../controllers/AuthController');
 
 // noinspection JSUnresolvedFunction

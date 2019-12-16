@@ -1,5 +1,5 @@
 const ioGet = require('../lib/ioGet');
-const BoardValidation = require('../validators/BoardValidatior');
+const BoardValidation = require('../busiValid/BoardValidatior');
 const BoardController = require('../controllers/BoardController');
 
 module["exports"] = socket => {
