@@ -19,9 +19,14 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, './public/dist')));
-app.use(express.static(path.join(__dirname,'./public')));
-// Routing
-require('./routes/Router')(app);
+app.use(express.static(path.join(__dirname, './public')));
+
+// Http Routing
+const Router = express.Router(app);
+// noinspection JSUnresolvedFunction
+Router.use('/', require('./api/IndexRoute'));
+// noinspection JSUnresolvedFunction
+Router.use('/auth', require('./api/AuthRoute'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

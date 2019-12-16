@@ -18,7 +18,7 @@ module["exports"] = {
             // minimize bundle size by exclude ant-design icon elements
             config.resolve = {
                 alias: {
-                    "@ant-design/icons/lib/dist$": path.resolve(__dirname, "./client/src/icons.js")
+                    "@ant-design/icons/lib/dist$": path.resolve(__dirname, "./icons.config.js")
                 }
             }
         }

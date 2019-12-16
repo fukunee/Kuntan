@@ -15,11 +15,11 @@ module["exports"] = io => {
     io.on('connection', socket => {
         console.log(`A user connected with socket id ${socket.id}`);
         //Update, Delete, Add user, remove user
-        require('./api/Board')(socket);
+        require('./api/BoardRoute')(socket);
         //Add, Delete, update list order
-        require('./api/Resource')(socket);
+        require('./api/ResourceRoute')(socket);
         //Add, Delete, update, add user, remove user
-        require('./api/Table')(socket);
+        require('./api/TableRoute')(socket);
         socket.on('disconnect', () => {
             socket.emit('DISCONNECT');
             console.log(`A user disconnected with socket id ${socket.id}`);
