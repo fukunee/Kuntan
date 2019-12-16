@@ -5,6 +5,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 // noinspection JSUnusedGlobalSymbols
 module["exports"] = {
+    runtimeCompiler: true,
     configureWebpack: config => {
         if (isProduction) {
             // minimize bundle size by gzip

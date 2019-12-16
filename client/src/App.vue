@@ -1,17 +1,27 @@
 <template>
-    <div id="app">
-        <img alt="Vue logo" src="./assets/logo.png">
-        <HelloWorld msg="Welcome to Your Vue.js App"/>
-    </div>
+    <a-layout id="layout" class="layout">
+        <a-layout-header>
+            <div class="logo">KUNTAN</div>
+            <Auth/>
+        </a-layout-header>
+        <a-layout-content style="padding: 20px 50px">
+            <div :style="{ background: '#fff', padding: '24px', minHeight: '280px' }">
+                <router-view></router-view>
+            </div>
+        </a-layout-content>
+        <a-layout-footer style="text-align: center">
+            Kuntan ©2018 Created by Fukun.Tech
+        </a-layout-footer>
+    </a-layout>
 </template>
 
 <script>
-    import HelloWorld from './components/HelloWorld.vue'
+    import Auth from './components/Auth.vue';
 
     export default {
         name: 'app',
         components: {
-            HelloWorld
+            Auth
         },
         mounted: function () {
             let vm = this;
@@ -28,12 +38,20 @@
 </script>
 
 <style>
-    #app {
+    #layout {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
+    }
+
+    #layout .logo {
+        width: 120px;
+        height: 31px;
+        background: rgba(255, 255, 255, 0.4);
+        margin: 16px 24px 16px 0;
+        float: left;
+        font-size: 28px;
+        line-height: 33px;
     }
 </style>

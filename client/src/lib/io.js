@@ -1,7 +1,7 @@
 import Vue from 'vue'
 // noinspection NpmUsedModulesInstalled
 import VueSocketIO from 'vue-socket.io'
-import store from "../store";
+import {store} from "../store/store";
 
 const socket = {
     // debug: true,
