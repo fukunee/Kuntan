@@ -12,21 +12,21 @@ app.set('views', path.join(__dirname, '../dist'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
-// other middleware setup
+// runtime middleware setup
 app.use(logger('tiny'));
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, './public/dist')));
-app.use(express.static(path.join(__dirname, './public')));
+app.use(express.static(path.join(__dirname, '../public/dist')));
+app.use(express.static(path.join(__dirname, '../public')));
 
-// Http Routing
+// http routing
 const Router = express.Router(app);
 // noinspection JSUnresolvedFunction
-Router.use('/', require('./api/IndexRoute'));
+Router.use('/', require('../api/IndexRoute'));
 // noinspection JSUnresolvedFunction
-Router.use('/auth', require('./api/AuthRoute'));
+Router.use('/auth', require('../api/AuthRoute'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

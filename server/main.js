@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-const app = require('./app');
+const app = require('./runtime/app');
 const debug = require('debug')('Kuntan:server');
 const http = require('http');
 // noinspection JSUnusedLocalSymbols
@@ -53,7 +53,7 @@ const server = http.createServer(app);
  * Create Websocket server.
  */
 const io = require('socket.io')(server);
-require('./io')(io);
+require('./runtime/io')(io);
 
 /**
  * Listen on provided port, on all network interfaces.
