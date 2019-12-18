@@ -16,11 +16,11 @@ module["exports"] = {
                     minRatio: 0.8
                 })
             );
-            // minimize bundle size by exclude ant-design icon elements
-            config.resolve = {
-                alias: {
-                    "@ant-design/icons/lib/dist$": path.resolve(__dirname, "./antdIcons.config.js")
-                }
+        }
+        // minimize bundle size by exclude ant-design icon elements
+        config.resolve = {
+            alias: {
+                "@ant-design/icons/lib/dist$": path.resolve(__dirname, "./antdIcons.config.js")
             }
         }
     }
