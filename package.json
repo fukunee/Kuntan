@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "server": "node -r dotenv/config server/main.js dotenv_config_path=./.env.production",
-    "client": "vue-cli-service serve ./client/src/main.js --mode production",
-    "build": "vue-cli-service build ./client/src/main.js --dest ./server/public/dist --mode production"
+    "client": "vue-cli-service serve ./client/src/main.js --mode development",
+    "server": "node -r dotenv/config server/main.js dotenv_config_path=./.env.development",
+    "build": "vue-cli-service build ./client/src/main.js --dest ./server/public/dist --mode development",
+    "server:production": "node -r dotenv/config server/main.js dotenv_config_path=./.env.production",
+    "build:production": "vue-cli-service build ./client/src/main.js --dest ./server/public/dist --mode production"
   },
   "dependencies": {
     "@hapi/joi": "^16.1.8",
