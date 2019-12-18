@@ -23,14 +23,16 @@
         components: {
             Auth
         },
-        mounted: function () {
+        beforeMount: function () {
+            // before auth.component created sync auth data
+            // auth.component can render the right with updated auth data
             let vm = this;
-            // Listen LocalStorage:Token
+            console.log('beforeMount');
+            vm.$store.dispatch('auth/syncAuth');
+            // listen the change of token
             window.addEventListener('storage', function (e) {
                 if (e.key === 'token') {
-                    let token = e.newValue;
-                    vm.$socket.disconnect();
-                    vm.$getSocket(token);
+                    vm.$store.dispatch('auth/syncAuth');
                 }
             });
         }

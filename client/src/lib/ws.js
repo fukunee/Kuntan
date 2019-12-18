@@ -1,26 +1,28 @@
-import Vue from 'vue'
+import Vue from "vue"
 // noinspection NpmUsedModulesInstalled
-import VueSocketIO from 'vue-socket.io'
-import {store} from "../store/store";
+import VueSocketIO from "vue-socket.io"
+import store from "../store";
 
 const socket = {
-    // debug: true,
+    debug: true,
     connection: '',
     vuex: {
-        store,
+        store: store,
         actionPrefix: 'SOCKET_',
         mutationPrefix: 'SOCKET_'
     }
 };
 
 function getSocket(t) {
-    const socketIp = 'ws://localhost:8080';//socket地址
+    // noinspection JSUnresolvedVariable
+    const socketIp = 'ws://' + process.env.VUE_APP_BASEURL;
     socket.connection = socketIp;
-    if (localStorage.getItem('token') || t) {//判断是否有token
+    if (localStorage.getItem('token') || t) {
         let token = localStorage.getItem('token') ? localStorage.getItem('token') : t;
         socket.connection = socketIp + '?token=' + token;
     }
-    Vue.use(new VueSocketIO(socket))
+    Vue.use(new VueSocketIO(socket));
+    return socket.id;
 }
 
 export default getSocket

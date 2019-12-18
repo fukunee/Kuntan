@@ -6,8 +6,6 @@
 const app = require('./runtime/app');
 const debug = require('debug')('Kuntan:server');
 const http = require('http');
-// noinspection JSUnusedLocalSymbols
-const dotenv = require('dotenv').config();
 const mongoose = require('mongoose');
 
 // noinspection JSUnresolvedVariable
@@ -39,7 +37,7 @@ mongoose.connect(
 });
 
 /**
- * Get port from environment and store in Express.
+ * Get port from environment and auth in Express.
  */
 const port = normalizePort(SERVER_PORT);
 app.set('port', port);
