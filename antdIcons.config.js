@@ -6,7 +6,7 @@ export {
     default as MehOutline
 } from '@ant-design/icons/lib/outline/MehOutline';
 
-// export what antd runtime components need
+// export what antd runtime view need
 export {
     default as CloseOutline
 } from '@ant-design/icons/lib/outline/CloseOutline';

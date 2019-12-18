@@ -1,6 +1,6 @@
 import createPersistedState from 'vuex-persistedstate';
-import getSocket from "../lib/ws";
-import authAxios from "../api/authAxios";
+import getSocket from "../runtime/ws";
+import authAxios from "../service/authAxios";
 
 const state = {
     authState: -1,//-1:logout 0:login but not connected 1:login and connected
@@ -38,7 +38,7 @@ const actions = {
     async syncAuth({commit}) {
         //!todo: 1.check websocket connection. true=>5 false=>2
         //!todo: 2.get token from localStorage.
-        //!todo: 3.use api.get('auth') to check token
+        //!todo: 3.use service.get('auth') to check token
         console.log('syncAuth');
         const syncAuthRsp = await authAxios.syncAuth();
         //!todo: 4.start websocket connection

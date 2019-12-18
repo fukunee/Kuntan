@@ -16,7 +16,7 @@
 </template>
 
 <script>
-    import Auth from './components/Auth.vue';
+    import Auth from './module/Auth.vue';
 
     export default {
         name: 'app',

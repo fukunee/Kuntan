@@ -1,6 +1,6 @@
 import VueRouter from 'vue-router';
-import Home from "../components/routes/Home.vue";
-import Game from "../components/routes/Game.vue";
+import Home from "../view/Home.vue";
+import Game from "../view/Game.vue";
 
 const router = new VueRouter([
     {

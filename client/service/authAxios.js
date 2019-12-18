@@ -1,4 +1,4 @@
-import Axios from '../lib/axios';
+import Axios from '../runtime/axios';
 
 export default {
     syncAuth() {
