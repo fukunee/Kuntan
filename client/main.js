@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './view/App.vue'
 import store from './store';
-import {Layout} from 'ant-design-vue'
+import {Layout, Button, Form, Input, Col, Row, Icon} from 'ant-design-vue'
 import VueRouter from 'vue-router';
 import router from './runtime/router'
 
@@ -13,6 +13,12 @@ Vue.use(VueRouter);
 
 // AntDesign Setup
 Vue.use(Layout);
+Vue.use(Button);
+Vue.use(Form);
+Vue.use(Input);
+Vue.use(Row);
+Vue.use(Col);
+Vue.use(Icon);
 
 // Vue Instance Init
 new Vue({

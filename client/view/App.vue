@@ -1,8 +1,14 @@
 <template>
     <a-layout id="layout" class="layout">
         <a-layout-header>
-            <div class="logo">KUNTAN</div>
-            <Auth/>
+            <a-row>
+                <a-col :span="16" :order="1">
+                    <div class="logo">KUNTAN</div>
+                </a-col>
+                <a-col :span="8" :order="2">
+                    <Auth/>
+                </a-col>
+            </a-row>
         </a-layout-header>
         <a-layout-content style="padding: 20px 50px">
             <div :style="{ background: '#fff', padding: '24px', minHeight: '280px' }">
