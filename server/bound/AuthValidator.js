@@ -7,11 +7,11 @@ module["exports"] = {
             name: Joi.string()
                 .max(255)
                 .required(),
-            email: Joi.string()
-                .max(255)
-                .min(4)
-                .required()
-                .email(),
+            // email: Joi.string()
+            //     .max(255)
+            //     .min(4)
+            //     .required()
+            //     .email(),
             password: Joi.string()
                 .required()
                 //REGEX: 'A password must at least contain a letter, a capital letter, a number and must be between 8 and 32 characters long'
@@ -27,11 +27,11 @@ module["exports"] = {
                         error: 'A name is required'
                     });
                     break;
-                case 'email':
-                    res.status(400).send({
-                        error: 'A valid email is required'
-                    });
-                    break;
+                // case 'email':
+                //     res.status(400).send({
+                //         error: 'A valid email is required'
+                //     });
+                //     break;
                 case 'password':
                     res.status(400).send({
                         error:
